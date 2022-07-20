@@ -15,7 +15,7 @@ export default function QuestionList (){
         },
         {
             _id: "final_question",
-            text: "This is the second question. What is 2^2?",
+            text: "This is the third question. What is 2^2?",
             answer: 4
         }
     ];
