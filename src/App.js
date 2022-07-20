@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import QuestionView from './QuestionView';
+import QuestionList from './QuestionList';
 
 class App extends Component{
   render(){
     return(
-      <QuestionView/>
+      <QuestionList/>
     )
   }
 }
