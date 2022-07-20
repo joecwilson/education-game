@@ -9,8 +9,15 @@ const QuestionView = ({question}) => {
     const test = "hello"
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert('You answered ${userAnswer} to the question ${text}');
-        //alert('You answered ${test}')
+        if(userAnswer == answer){
+            alert("You answered " + userAnswer + " to the question " + "\n\n"+ text + "\n\nYou were correct. Good Job! :)");
+            //alert("You answered {userAnswer} to the question {text} \n\nYou were correct. Good Job! :)");
+        }
+        else{
+            alert("You answered " + userAnswer + " to the question " + "\n\n"+ text + "\n\nYou were incorrect. Try agqin :(");
+        }
+        
+        //alert('You answered ' + test)
 
     }
 
