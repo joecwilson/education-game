@@ -1,3 +1,5 @@
+//@ts-check
+
 import React, {useState} from 'react'
 import QuestionView from './QuestionView'
 
@@ -6,20 +8,17 @@ export default function QuestionList (){
         {
             _id: "something",
             question_text: "This is the first question. What is 2+2?",
-            answer: 4,
-            correct: false
+            answer: 4
         },
         {
             _id: "something_else",
             question_text: "This is the second question. What is 2*2?",
-            answer: 4,
-            correct: false
+            answer: 4
         },
         {
             _id: "final_question",
             question_text: "This is the third question. What is 2^2?",
-            answer: 4,
-            correct: false
+            answer: 4
         }
     ];
     const [questions] = useState(initialValues);

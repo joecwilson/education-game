@@ -4,8 +4,9 @@ import {useState} from 'react';
 
 
 const QuestionView = ({question}) => {
-    const {question_text,answer,correct} = question;
-    const [userAnswer,setUserAnswer] = useState({})
+    const {question_text,answer} = question;
+    const [userAnswer,setUserAnswer] = useState({});
+    let correct = false;
     const handleSubmit = (event) => {
         event.preventDefault();
         if(userAnswer == answer){
@@ -46,7 +47,10 @@ const QuestionView = ({question}) => {
                     onChange={(e) => setUserAnswer(e.target.value)}/>
                 <input className="" type="submit"/>
             </form>
-            
+            {(correct)? 
+                "completed":
+                "Not Completed Yet"
+            }
             
         </div>
     );
