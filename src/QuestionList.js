@@ -7,17 +7,17 @@ export default function QuestionList (){
     const initialValues = [
         {
             _id: "something",
-            question_text: "This is the first question. What is 2+2?",
+            question_text: "What is 2+2?",
             answer: 4
         },
         {
             _id: "something_else",
-            question_text: "This is the second question. What is 2*2?",
+            question_text: "What is 2*2?",
             answer: 4
         },
         {
             _id: "final_question",
-            question_text: "This is the third question. What is 2^2?",
+            question_text: "What is 2^2?",
             answer: 4
         }
     ];
@@ -26,12 +26,18 @@ export default function QuestionList (){
         question => <QuestionView key={question._id} question={question}/>
     );
     return(
-        <div className="container">
+        <div>
             <h1>
                 List of Questions
             </h1>
-            {questionViews}
-        </div>
+            <div className="grid grid-cols-5 gap-10">
+                <div className="col-span-3 col-start-2 rounded-md bg-slate-400 p-4" >
+                    {questionViews}               
+                </div> 
+                <div className="box col-span-3 col-start-2 p-4">
+                    padding
+                </div>
+            </div>
+        </div>       
     );
-    
-    }
+}

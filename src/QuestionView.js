@@ -2,20 +2,23 @@ import { getAllByTestId } from '@testing-library/react';
 import React from 'react';
 import {useState} from 'react';
 
+import correctLogo from './images/Correct.svg'
+
 
 const QuestionView = ({question}) => {
     const {question_text,answer} = question;
-    const [userAnswer,setUserAnswer] = useState({});
-    let correct = false;
+    const [userAnswer,setUserAnswer] = useState(0);
+    const [correct,setCorrect] = useState(0);
+    //let correct = false;
     const handleSubmit = (event) => {
         event.preventDefault();
         if(userAnswer == answer){
-            alert("You answered " + userAnswer + " to the question " + "\n\n"+ question_text + "\n\nYou were correct. Good Job! :)");
-            correct = true;
+            //alert("You answered " + userAnswer + " to the question " + "\n\n"+ question_text + "\n\nYou were correct. Good Job! :)");
+            setCorrect(correct => true)
             //alert("You answered {userAnswer} to the question {text} \n\nYou were correct. Good Job! :)");
         }
         else{
-            alert("You answered " + userAnswer + " to the question " + "\n\n"+ question_text + "\n\nYou were incorrect. Try agqin :(");
+            //alert("You answered " + userAnswer + " to the question " + "\n\n"+ question_text + "\n\nYou were incorrect. Try agqin :(");
         }
         
         //alert('You answered ' + test)
@@ -23,7 +26,7 @@ const QuestionView = ({question}) => {
     }
 
     return(
-        <div className="container mx-auto bg-slate-400 rounded-md mt-4 ">
+        <div className="container mx-auto">
             <div className="mb-4 text-center">
                 <div className="block text-gray-700 text-sm font-bold mb-2" >
                     Question
@@ -48,7 +51,7 @@ const QuestionView = ({question}) => {
                 <input className="" type="submit"/>
             </form>
             {(correct)? 
-                "completed":
+                <img src={correctLogo} className= "max-h-10 m-5 ml-18"></img>:
                 "Not Completed Yet"
             }
             
