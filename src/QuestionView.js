@@ -4,17 +4,17 @@ import {useState} from 'react';
 
 
 const QuestionView = ({question}) => {
-    const {text,answer} = question;
+    const {question_text,answer,correct} = question;
     const [userAnswer,setUserAnswer] = useState({})
-    const test = "hello"
     const handleSubmit = (event) => {
         event.preventDefault();
         if(userAnswer == answer){
-            alert("You answered " + userAnswer + " to the question " + "\n\n"+ text + "\n\nYou were correct. Good Job! :)");
+            alert("You answered " + userAnswer + " to the question " + "\n\n"+ question_text + "\n\nYou were correct. Good Job! :)");
+            correct = true;
             //alert("You answered {userAnswer} to the question {text} \n\nYou were correct. Good Job! :)");
         }
         else{
-            alert("You answered " + userAnswer + " to the question " + "\n\n"+ text + "\n\nYou were incorrect. Try agqin :(");
+            alert("You answered " + userAnswer + " to the question " + "\n\n"+ question_text + "\n\nYou were incorrect. Try agqin :(");
         }
         
         //alert('You answered ' + test)
@@ -29,7 +29,7 @@ const QuestionView = ({question}) => {
                 </div>
                 <div className="">
                     <p>
-                        {text}
+                        {question_text}
                     </p>
                 </div>
             </div>

@@ -5,18 +5,21 @@ export default function QuestionList (){
     const initialValues = [
         {
             _id: "something",
-            text: "This is the first question. What is 2+2?",
-            answer: 4
+            question_text: "This is the first question. What is 2+2?",
+            answer: 4,
+            correct: false
         },
         {
             _id: "something_else",
-            text: "This is the second question. What is 2*2?",
-            answer: 4
+            question_text: "This is the second question. What is 2*2?",
+            answer: 4,
+            correct: false
         },
         {
             _id: "final_question",
-            text: "This is the third question. What is 2^2?",
-            answer: 4
+            question_text: "This is the third question. What is 2^2?",
+            answer: 4,
+            correct: false
         }
     ];
     const [questions] = useState(initialValues);
