@@ -22,21 +22,21 @@ export default function QuestionList (){
         }
     ];
     const [questions] = useState(initialValues);
-    const questionViews = questions.map(
-        question => <QuestionView key={question._id} question={question}/>
-    );
+    // const questionViews = questions.map(
+    //     question => <QuestionView key={question._id} question={question}/>
+    // );
     return(
         <div>
             <h1>
                 List of Questions
             </h1>
-            <div className="grid grid-cols-5 gap-10">
-                <div className="col-span-3 col-start-2 rounded-md bg-slate-400 p-4" >
-                    {questionViews}               
-                </div> 
-                <div className="box col-span-3 col-start-2 p-4">
-                    padding
-                </div>
+            <div className="grid grid-cols-5 gap-5">
+                {questions.map(question =>         
+                    <div className="col-span-3 col-start-2 rounded-md bg-slate-400 p-4" >
+                        <QuestionView key={question._id} question={question}/>
+                        
+                    </div> 
+                )}  
             </div>
         </div>       
     );
