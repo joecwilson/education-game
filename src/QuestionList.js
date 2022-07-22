@@ -4,21 +4,7 @@ import React, {useState} from 'react'
 import QuestionView from './QuestionView'
 import Question from './Question.js'
 
-// class Question{
-//     _id: number
-//     question_text: String;
-//     answer: number;
-//     constructor(_id: number, question_text:String, answer:number){
-//         this._id = _id
-//         this.question_text = question_text
-//         this.answer = answer
-//     }
-// }
-
 class QuestionList extends React.Component {
-    // constructor(props){
-    //     super(props)
-    // }
     initialValues = [
         new Question(
             10,
@@ -36,11 +22,7 @@ class QuestionList extends React.Component {
             4
         )
     ];
-    //questions = useState(this.initialValues);
-
-    // const questionViews = questions.map(
-    //     question => <QuestionView key={question._id} question={question}/>
-    // );
+    
     render(){
         return(
             <div>
