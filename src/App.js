@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import QuestionList from './QuestionList';
+import QuestionList from './QuestionList.js';
 
 class App extends Component{
   render(){
