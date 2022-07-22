@@ -1,4 +1,3 @@
-import { getAllByTestId } from '@testing-library/react';
 import React from 'react';
 import {useState} from 'react';
 
@@ -12,7 +11,7 @@ const QuestionView = ({question}) => {
     //let correct = false;
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(userAnswer == answer){
+        if(userAnswer === answer){
             //alert("You answered " + userAnswer + " to the question " + "\n\n"+ question_text + "\n\nYou were correct. Good Job! :)");
             setCorrect(correct => true)
             //alert("You answered {userAnswer} to the question {text} \n\nYou were correct. Good Job! :)");
@@ -47,11 +46,14 @@ const QuestionView = ({question}) => {
                     type="number" 
                     placeholder="0"
                     value={userAnswer}
-                    onChange={(e) => setUserAnswer(e.target.value)}/>
+                    onChange={(e) => setUserAnswer(parseInt(e.target.value))}/>
                 <input className="" type="submit"/>
             </form>
             {(correct)? 
-                <img src={correctLogo} className= "max-h-10 m-5 ml-18"></img>:
+                <img 
+                    src={correctLogo} 
+                    className= "max-h-10 m-5 ml-18"
+                    alt="You got the answer correct"></img>:
                 "Not Completed Yet"
             }
             
