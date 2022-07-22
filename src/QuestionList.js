@@ -22,7 +22,7 @@ class QuestionList extends React.Component {
             4
         )
     ];
-    
+
     render(){
         return(
             <div>
@@ -31,8 +31,8 @@ class QuestionList extends React.Component {
                 </h1>
                 <div className="grid grid-cols-5 gap-5">
                     {this.initialValues.map((question) =>         
-                        <div className="col-span-3 col-start-2 rounded-md bg-slate-400 p-4" >
-                            <QuestionView key={question._id} question={question}/>
+                        <div className="col-span-3 col-start-2 rounded-md bg-slate-400 p-4"  key={question._id}>
+                            <QuestionView  question={question}/>
 
                         </div> 
                     )}  
