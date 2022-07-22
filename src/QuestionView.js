@@ -8,19 +8,14 @@ const QuestionView = ({question}) => {
     const {question_text,answer} = question;
     const [userAnswer,setUserAnswer] = useState(0);
     const [correct,setCorrect] = useState(0);
-    //let correct = false;
     const handleSubmit = (event) => {
         event.preventDefault();
         if(userAnswer === answer){
-            //alert("You answered " + userAnswer + " to the question " + "\n\n"+ question_text + "\n\nYou were correct. Good Job! :)");
             setCorrect(correct => true)
-            //alert("You answered {userAnswer} to the question {text} \n\nYou were correct. Good Job! :)");
         }
         else{
-            //alert("You answered " + userAnswer + " to the question " + "\n\n"+ question_text + "\n\nYou were incorrect. Try agqin :(");
+            setCorrect(correct => false)
         }
-        
-        //alert('You answered ' + test)
 
     }
 
