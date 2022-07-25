@@ -1,20 +1,20 @@
 import React from 'react';
 import {useState} from 'react';
-
 import correctLogo from './images/Correct.svg'
 
 
-const QuestionView = ({question}) => {
-    const {question_text,answer} = question;
+
+function QuestionView (props){
     const [userAnswer,setUserAnswer] = useState(0);
-    const [correct,setCorrect] = useState(0);
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(userAnswer === answer){
-            setCorrect(correct => true)
+        if(userAnswer === props.question.answer){
+            props.onCorrectChange(2, props.question._id)
+            //setCorrect(correct => true)
         }
         else{
-            setCorrect(correct => false)
+            props.onCorrectChange(1, props.question._id)
+            //setCorrect(correct => false)
         }
 
     }
@@ -27,7 +27,7 @@ const QuestionView = ({question}) => {
                 </div>
                 <div className="">
                     <p>
-                        {question_text}
+                        {props.question.question_text}
                     </p>
                 </div>
             </div>
@@ -44,7 +44,7 @@ const QuestionView = ({question}) => {
                     onChange={(e) => setUserAnswer(parseInt(e.target.value))}/>
                 <input className="" type="submit"/>
             </form>
-            {(correct)? 
+            {(props.question.correct === 2)? 
                 <img 
                     src={correctLogo} 
                     className= "max-h-10 m-5 ml-18"
