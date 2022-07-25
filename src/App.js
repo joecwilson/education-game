@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import Footer from './Footer.js';
 import QuestionList from './QuestionList.js';
 
 class App extends Component{
   render(){
     return(
-      <QuestionList/>
+      <div className="dark:bg-stone-900">
+        <QuestionList/>
+        <Footer/>
+      </div>
+      
     )
   }
 }

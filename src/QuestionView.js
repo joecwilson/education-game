@@ -19,20 +19,21 @@ function QuestionView (props){
 
     }
 
+
     return(
         <div className="container mx-auto">
             <div className="mb-4 text-center">
-                <div className="block text-gray-700 text-sm font-bold mb-2" >
+                <div className="block text-gray-700 text-sm font-bold mb-2 dark:text-white" >
                     Question
                 </div>
-                <div className="">
+                <div className="dark:text-white">
                     <p>
                         {props.question.question_text}
                     </p>
                 </div>
             </div>
             <form className="mb-6 text-center" onSubmit={handleSubmit}>
-                <label className="block text-gray-700 text-sm font-bold mb-2" >
+                <label className="block text-gray-700 text-sm font-bold mb-2 dark:text-white" >
                     Answer
                 </label>
                 <input 
@@ -42,7 +43,7 @@ function QuestionView (props){
                     placeholder="0"
                     value={userAnswer}
                     onChange={(e) => setUserAnswer(parseInt(e.target.value))}/>
-                <input className="" type="submit"/>
+                <input className="dark:text-white" type="submit"/>
             </form>
             {(props.question.correct === 2)? 
                 <img 
@@ -55,7 +56,8 @@ function QuestionView (props){
                     src={incorrectLogo} 
                     className= "max-h-10 m-5 ml-18"
                     alt="You got the answer incorrect"/>
-                    :"Not Completed Yet"
+                    :
+                    <p className="text-white">Not Completed Yet</p>
             
                 
             }
