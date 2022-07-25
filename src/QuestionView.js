@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import correctLogo from './images/Correct.svg'
-
+import incorrectLogo from './images/Incorrect.svg'
 
 
 function QuestionView (props){
@@ -48,8 +48,16 @@ function QuestionView (props){
                 <img 
                     src={correctLogo} 
                     className= "max-h-10 m-5 ml-18"
-                    alt="You got the answer correct"></img>:
-                "Not Completed Yet"
+                    alt="You got the answer correct"/>
+                :
+                (props.question.correct === 1)?
+                    <img 
+                    src={incorrectLogo} 
+                    className= "max-h-10 m-5 ml-18"
+                    alt="You got the answer incorrect"/>
+                    :"Not Completed Yet"
+            
+                
             }
             
         </div>
