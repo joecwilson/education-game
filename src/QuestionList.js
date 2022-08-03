@@ -1,7 +1,6 @@
 //@ts-check
 
 import React, {useState} from 'react'
-//import React from 'react'
 import QuestionView from './QuestionView'
 import Question from './Question.js'
 
@@ -28,6 +27,12 @@ class QuestionList extends React.Component {
                     "What is 2^2",
                     4,
                     -1
+                ),
+                new Question(
+                    13,
+                    "What is 5*5",
+                    25,
+                    -1
                 )
             ],
         }
@@ -51,7 +56,6 @@ class QuestionList extends React.Component {
         let newQuestions = this.state.questions;
         // @ts-ignore
         newQuestions[changeIndex] = questiontoChange;
-        
         
         // If the user got it correct reveal the next question
         // Need to determine when user has finished final question and do someyhing else.

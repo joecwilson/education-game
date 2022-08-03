@@ -5,7 +5,7 @@ import QuestionList from './QuestionList.js';
 class App extends Component{
   render(){
     return(
-      <div className="dark:bg-stone-900">
+      <div className="dark:bg-stone-900 min-h-screen">
         <QuestionList/>
         <Footer/>
       </div>

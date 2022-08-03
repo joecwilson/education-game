@@ -3,22 +3,17 @@ import {useState} from 'react';
 import correctLogo from './images/Correct.svg'
 import incorrectLogo from './images/Incorrect.svg'
 
-
 function QuestionView (props){
     const [userAnswer,setUserAnswer] = useState(0);
     const handleSubmit = (event) => {
         event.preventDefault();
         if(userAnswer === props.question.answer){
             props.onCorrectChange(2, props.question._id)
-            //setCorrect(correct => true)
         }
         else{
             props.onCorrectChange(1, props.question._id)
-            //setCorrect(correct => false)
         }
-
     }
-
 
     return(
         <div className="container mx-auto">
@@ -57,11 +52,8 @@ function QuestionView (props){
                     className= "max-h-10 m-5 ml-18"
                     alt="You got the answer incorrect"/>
                     :
-                    <p className="text-white">Not Completed Yet</p>
-            
-                
+                    <p className="text-white">Not Completed Yet</p>  
             }
-            
         </div>
     );
 };
