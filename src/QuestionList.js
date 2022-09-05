@@ -5,100 +5,95 @@ import QuestionView from './QuestionView'
 import Question from './Question.js'
 
 class QuestionList extends React.Component {
-    constructor(){
+    constructor() {
         //@ts-ignore
         super();
         this.state = {
-            questions: [
-                new Question(
-                    10,
-                    "What is 2+2",
-                    4,
-                    0
-                ),
-                new Question(
-                    11,
-                    "What is 2*2",
-                    4,
-                    -1
-                ),
-                new Question(
-                    12,
-                    "What is 2^2",
-                    4,
-                    -1
-                ),
-                new Question(
-                    13,
-                    "What is 5*5",
-                    25,
-                    -1
-                )
-            ],
-        }
+            title: "",
+            description: "",
+            questions: [],
+        };
 
-        this.handleCorrectChange = this.handleCorrectChange.bind(this)
-        this.getOnlyVisible = this.getOnlyVisible.bind(this)
+        this.handleCorrectChange = this.handleCorrectChange.bind(this);
+        this.getOnlyVisible = this.getOnlyVisible.bind(this);
     }
-    
+
+    async componentDidMount() {
+        try {
+            const res = await fetch('http://localhost:8000/api/1/');
+            const questionAPIResult = await res.json();
+
+            this.setState({
+                questions: questionAPIResult["question_rel"],
+                title: questionAPIResult["title"],
+                description: questionAPIResult["description"]
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
 
 
     /**
      * @param {number} correct
-     * @param {number} _id
+     * @param {number} id
      */
-    handleCorrectChange(correct, _id){
-
-        let questiontoChange = this.state.questions.find(Question => Question._id === _id);
+    handleCorrectChange(correct, id) {
+        //alert("HandleCorrectChange called with correct value of " + correct + " and id value of " + id)
+        let questiontoChange = this.state.questions.find(Question => Question.id === id);
         // @ts-ignore
-        questiontoChange.correct = correct;
-        let changeIndex = this.state.questions.findIndex(Question => Question._id === _id);
+        questiontoChange.visible = correct;
+        let changeIndex = this.state.questions.findIndex(Question => Question.id === id);
         let newQuestions = this.state.questions;
         // @ts-ignore
         newQuestions[changeIndex] = questiontoChange;
-        
+
         // If the user got it correct reveal the next question
         // Need to determine when user has finished final question and do someyhing else.
-        if(correct === 2 && changeIndex < this.state.questions.length-1){
-            let questionToReveal = this.state.questions.find(Question => Question._id === (_id+1));
+        if (correct === 2 && changeIndex < this.state.questions.length - 1) {
+            let questionToReveal = this.state.questions.find(Question => Question.id === (id + 1));
             // @ts-ignore
-            questionToReveal.correct = 0;
-            let revealIndex = this.state.questions.findIndex(Question => Question._id === (_id+1));
+            questionToReveal.visible = 0;
+            let revealIndex = this.state.questions.findIndex(Question => Question.id === (id + 1));
             // @ts-ignore
             newQuestions[revealIndex] = questionToReveal;
         }
 
         // Update state
-        this.setState((state,props) =>({
-            questions:newQuestions
+        this.setState((state, props) => ({
+            questions: newQuestions
         }));
     }
-    
-    getOnlyVisible(){
-        return this.state.questions.filter(question => question.correct >= 0)
+
+    getOnlyVisible() {
+        return this.state.questions.filter(question => question.visible >= 0)
     }
 
-    render(){
-        return(
+    render() {
+        return (
+
             <div className="grid grid-cols-5 gap-5">
                 <h1 className="col-span-3 col-start-2 dark:text-white text-5xl text-center py-5">
-                    List of Questions
+                    {this.state.title}
                 </h1>
-            
-                {this.getOnlyVisible().map((question) =>         
-                    <div className="col-span-3 col-start-2 rounded-md bg-slate-400 p-4 dark:bg-stone-800"  
-                    key={question._id}>
-                        <QuestionView  
+                <p>
+                    {this.state.description}
+                </p>
+
+                {this.getOnlyVisible().map((question) =>
+                    <div className="col-span-3 col-start-2 rounded-md bg-slate-400 p-4 dark:bg-stone-800"
+                         key={question.id}>
+                        <QuestionView
                             question={question}
-                            onCorrectChange={this.handleCorrectChange} />
+                            onCorrectChange={this.handleCorrectChange}/>
 
-                    </div> 
-                )}  
+                    </div>
+                )}
 
-            </div>       
+            </div>
         );
     }
-    
+
 }
 
 export default QuestionList;

@@ -5,14 +5,14 @@
  * 1 means answered incorrectly, and 2 means answered correctly
  */
 export default class Question{
-    _id: number;
+    id: number;
     question_text: String;
     answer: number;
-    correct: number
-    constructor(_id: number, question_text:String, answer:number, correct: number){
-        this._id = _id
+    visible: number
+    constructor(id: number, question_text:String, answer:number, visible: number){
+        this.id = id
         this.question_text = question_text
         this.answer = answer
-        this.correct = correct
+        this.visible = visible
     }
 }

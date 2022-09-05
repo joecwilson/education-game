@@ -1,11 +1,11 @@
 
 exports.__esModule = true;
 var Question = /** @class */ (function () {
-    function Question(_id, question_text, answer, correct) {
-        this._id = _id;
+    function Question(id, question_text, answer, visible) {
+        this.id = id;
         this.question_text = question_text;
         this.answer = answer;
-        this.correct = correct;
+        this.visible = visible;
     }
     return Question;
 }());
